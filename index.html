@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>QB-Norm</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+  		<meta property='og:url' content='https://www.robots.ox.ac.uk/~vgg/research/teachtext/' />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="icon" href="images/favicon.png">
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header" class="alt">
+				<h1>Cross Modal Retrieval with Querybank Normalisation</h1>
+				<div class="row align-items-center">
+					<div class="col-4 col-12-medium">
+						<span style="font-size:120%"><a href="https://scholar.google.com/citations?user=isei8_wAAAAJ&hl=en">Simion-Vlad Bogolin</a><sup>*</sup></span><br><span style="font-size:80%">VGG Oxford, IMAR</span>
+		 		     </div>
+					<div class="col-4">
+						<span style="font-size:120%"><a href="https://scholar.google.com/citations?user=UTn-_qEAAAAJ&hl=en&oi=ao">Ioana Croitoru</a><sup>*</sup></span><br><span style="font-size:80%">VGG Oxford, IMAR</span>
+					</div>
+					<div class="col-4 col-12-medium>
+						<span style="font-size:120%"><a href="https://scholar.google.com/citations?user=DQOT0OMAAAAJ">Hailin Jin</a></span><br><span style="font-size:80%">Adobe Research</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<span style="font-size:120%"><a href="#">Yang Liu</a></span><br><span style="font-size:80%">Peking Univ., VGG Oxford</span>
+					</div>
+					<div class="col-6">
+						<span style="font-size:120%"><a href="https://www.robots.ox.ac.uk/~albanie/">Samuel Albanie</a></span><br><span style="font-size:80%">VGG Oxford, Univ. of Cambridge</span>
+					</div>
+				</div>
+				<br>
+				<p style="font-size:100%"><sup>*</sup>Equal contribution</p>
+				</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#abstract" class="active">Abstract</a></li>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#paper">Paper, code and other resources</a></li>
+							<li><a href="#citation">Citation</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="abstract" class="main special">
+								<header class="major">
+									<h2>Abstract</h2>
+								<header>
+								<p><i>
+                                        Profiting from large-scale training datasets, advances in neural architecture design and efficient inference,
+                                        joint embeddings have become the dominant approach for tackling cross-modal retrieval.
+                                        In this work we first show that, despite their effectiveness, state-of-the-art joint embeddings suffer
+                                        significantly from the longstanding <b>hubness problem</b> in which a small number of gallery embeddings
+                                        form the nearest neighbours of many queries.
+                                        Drawing inspiration from the NLP literature, we formulate a simple but effective framework
+                                        called <b>Querybank Normalisation (QB-Norm)</b> that re-normalises query similarities to account for hubs in
+                                        the embedding space.
+                                        QB-Norm improves retrieval performance without requiring retraining.
+                                        Differently from prior work, we show that QB-Norm works effectively without concurrent access
+                                        to any test set queries. Within the QB-Norm framework, we also propose a novel similarity
+                                        normalisation method, the <b>Dynamic Inverted Softmax</b>, that is significantly more robust than existing approaches.
+                                        We showcase QB-Norm across a range of cross modal retrieval models and benchmarks where it consistently
+                                        enhances strong baselines beyond the state of the art.
+								</i></p>
+							</section>
+
+
+						<!-- Second Section -->
+							<section id="overview" class="main">
+                                        <header class="major special">
+                                            <h2>Overview</h2>
+                                        </header>
+ 
+                                <div class="row">
+                                    <div class="col-6 col-12-medium">
+                                       <p style="text-align:justify">
+											We consider the problem of cross modal retrieval in which 
+											queries <i>q<sub>1</sub></i> and <i>q<sub>2</sub></i> are compared
+											against a gallery of samples, <i>x<sub>1</sub></i> and <i>x<sub>2</sub></i>.
+											As we show in this work
+											the high-dimensional joint embeddings
+											employed by modern methods
+											for cross-modal retrieval suffer from the
+											<b>hubness problem</b>.
+											A hub (e.g. <i>x<sub>2</sub></i>) is the nearest
+											neighbour to multiple queries (<i>q<sub>1</sub></i> and <i>q<sub>2</sub></i>),
+											producing poor quality retrieval results (bottom left).    
+											<b>QB-Norm (right)</b>
+											employs a <i>querybank</i> to normalise similarities,
+											reducing the similarity of hub <i>x<sub>2</sub></i> to query <i>q<sub>1</sub></i>,
+											improving the retrieval results (bottom right).
+                                       </p>
+                                    </div>
+                                    <div class="col-6 col-12-medium">
+                                        <span class="image"> <img src="images/method.png" alt="" /> </span>
+                                    </div>
+                                </div>
+							</section>
+
+
+							<section id="paper" class="main special">
+								<header class="major">
+									<h2>Paper, code and other resources</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<a href="" class="icon solid major style1 fa-book-open"><span class="label">ArXiv</span></a>
+										<h3>Paper</h3>
+										<p>For more details please consult the full paper.</p>
+									</li>
+									<li>
+										<a href="https://github.com/ioanacroi/qb-norm" class="icon solid major brands style2 fa-github"><span class="label">GitHub</span></a>
+										<h3>Code</h3>
+										<p>The code for this paper, as well as the pre-trained models can be found on GitHub.</p>
+									  </a>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Get Started -->
+							<section id="citation" class="main">
+								<header class="major special">
+									<h2>Citation</h2>
+								</header>
+								<pre><code>
+TODO
+								</code></pre>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
